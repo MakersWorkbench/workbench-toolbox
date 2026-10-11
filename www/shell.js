@@ -3,7 +3,7 @@
   'use strict';
   var REG = window.TMWB_REGISTRY, TOOLS = REG.tools;
   var $ = function (id) { return document.getElementById(id); };
-  var home = $('homeView'), host = $('toolHost'), about = $('aboutView'), body = $('homeBody'), search = $('search');
+  var home = $('homeView'), host = $('toolHost'), about = $('aboutView'), body = $('homeBody');
   var backBtn = $('backBtn'), topTitle = $('topTitle'), themeBtn = $('themeBtn'), loading = $('loading');
   var NS = 'http://www.w3.org/2000/svg';
 
@@ -64,50 +64,22 @@
     var on = favs.indexOf(t.id) >= 0; f.setAttribute('aria-pressed', on);
     f.setAttribute('aria-label', (on ? 'Remove ' : 'Add ') + t.name + (on ? ' from favorites' : ' to favorites'));
     f.addEventListener('click', function () { toggleFav(t.id); });
-    wrap.appendChild(f); return wrap;
+    wrap.appendChild(f);
+    var links = el('div', 'cardlinks');
+    [[t.wiki, 'User guide'], [t.repoUrl, 'GitHub']].forEach(function (l) { var x = el('a', null, l[1]); x.href = l[0]; x.target = '_blank'; x.rel = 'noopener'; links.appendChild(x); });
+    wrap.appendChild(links); return wrap;
   }
   function section(title, tools) {
     var s = el('div'); s.appendChild(el('h2', 'sec', title));
     var g = el('div', 'grid'); tools.forEach(function (t) { g.appendChild(card(t, TOOLS.indexOf(t))); }); s.appendChild(g); return s;
   }
-  function words(q) { return q.toLowerCase().split(/[^a-z0-9.µΩ+#]+/).filter(Boolean); }
-  function hay(s) { return s.toLowerCase(); }
   function renderHome() {
-    var q = search.value.trim(); body.textContent = '';
-    if (!q) {
-      var fv = favs.map(toolById).filter(Boolean), rc = recents.map(toolById).filter(Boolean);
-      if (fv.length) body.appendChild(section('Favorites', fv));
-      if (rc.length) body.appendChild(section('Recently used', rc));
-      body.appendChild(section(fv.length || rc.length ? 'All tools' : 'Tools', TOOLS));
-      return;
-    }
-    var ws = words(q), toolHits = [], tabHits = [];
-    TOOLS.forEach(function (t) {
-      var th = hay(t.name + ' ' + t.tagline);
-      if (ws.every(function (w) { return th.indexOf(w) >= 0; })) toolHits.push(t);
-      t.tabs.forEach(function (tab, i) {
-        var h = hay(tab + ' ' + t.name);
-        if (ws.every(function (w) { return h.indexOf(w) >= 0; }) && ws.some(function (w) { return tab.toLowerCase().indexOf(w) >= 0; })) tabHits.push([t, tab, i]);
-      });
-    });
-    if (toolHits.length) body.appendChild(section('Tools', toolHits));
-    if (tabHits.length) {
-      body.appendChild(el('h2', 'sec', 'Tabs inside tools'));
-      var ul = el('ul', 'tabhits');
-      tabHits.forEach(function (h) {
-        var li = el('li'), a = el('a'); a.href = '#/t/' + h[0].id + '?tab=' + encodeURIComponent(h[1]);
-        a.appendChild(el('strong', null, h[1])); a.appendChild(el('small', null, 'in ' + h[0].name));
-        li.appendChild(a); ul.appendChild(li);
-      });
-      body.appendChild(ul);
-    }
-    if (!toolHits.length && !tabHits.length) body.appendChild(el('p', 'empty', 'Nothing matches "' + q + '". Try a part name, a unit, or a tool name.'));
+    body.textContent = '';
+    var fv = favs.map(toolById).filter(Boolean), rc = recents.map(toolById).filter(Boolean);
+    if (fv.length) body.appendChild(section('Favorites', fv));
+    if (rc.length) body.appendChild(section('Recently used', rc));
+    body.appendChild(section(fv.length || rc.length ? 'All tools' : 'Tools', TOOLS));
   }
-  search.addEventListener('input', renderHome);
-  search.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') { var a = body.querySelector('.tabhits a, .card'); if (a) a.click(); }
-    if (e.key === 'Escape' && search.value) { search.value = ''; renderHome(); e.stopPropagation(); }
-  });
 
   /* ---------- tool mounting ---------- */
   var cssDone = {}, scriptP = {}, mounted = {};
@@ -222,7 +194,6 @@
     if (typing || e.ctrlKey || e.metaKey || e.altKey) return;
     var v = parse().view;
     if (e.key === 'Escape') { if (v !== 'home') goHome(); }
-    else if (e.key === '/') { if (v !== 'home') location.hash = '#/'; e.preventDefault(); setTimeout(function () { search.focus(); search.select(); }, 0); }
     else if (e.key === '?') showKeys();
     else if (e.key === 't' || e.key === 'T') cycleTheme();
     else if (v === 'home' && /^[1-9]$/.test(e.key) && TOOLS[+e.key - 1]) location.hash = '#/t/' + TOOLS[+e.key - 1].id;
@@ -230,8 +201,9 @@
 
   /* ---------- offline support and update flow ---------- */
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-    var refreshing = false;
-    navigator.serviceWorker.addEventListener('controllerchange', function () { if (refreshing) return; refreshing = true; location.reload(); });
+    var refreshing = false, hadController = !!navigator.serviceWorker.controller;
+    // Reload only when an update takes over, never on the very first install.
+    navigator.serviceWorker.addEventListener('controllerchange', function () { if (refreshing || !hadController) return; refreshing = true; location.reload(); });
     navigator.serviceWorker.register('sw.js').then(function (reg) {
       function offer(w) { $('updateBanner').hidden = false; $('reloadBtn').onclick = function () { w.postMessage('SKIP_WAITING'); }; }
       if (reg.waiting && navigator.serviceWorker.controller) offer(reg.waiting);

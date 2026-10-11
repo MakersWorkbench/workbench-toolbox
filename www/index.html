@@ -12,7 +12,7 @@
 <meta name="apple-mobile-web-app-title" content="Toolbox">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="stylesheet" href="shell.css">
@@ -27,7 +27,7 @@
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
   </button>
   <div class="brand" id="brand">
-    <img src="icons/icon.svg" alt="" width="28" height="28">
+    <img src="img/mark.png" alt="" width="32" height="32">
     <span id="topTitle">Workbench Toolbox</span>
   </div>
   <div class="spacer"></div>
@@ -45,15 +45,23 @@
 <main id="main" tabindex="-1">
   <section id="homeView" aria-label="All tools">
     <div class="hero">
-      <h1>Workbench Toolbox</h1>
-      <p>Every Makers Workbench tool in one place. Free, open source, and it works offline.</p>
-    </div>
-    <div class="searchwrap">
-      <label for="search" class="sr">Search tools and tabs</label>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
-      <input id="search" type="search" placeholder="Search tools and tabs (try LED, baud, or 104)" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search">
+      <div class="hero-in">
+        <div class="logoplate"><img src="img/logo.png" alt="The Makers Workbench" width="1200" height="348"></div>
+        <h1>Workbench Toolbox</h1>
+        <p class="lede">Every free tool from The Makers Workbench in one app. Decode the markings on parts, run the everyday electronics math, size PCB traces and wire, plan batteries and power, and keep cheat sheets handy. It works offline, tracks nothing, and costs nothing.</p>
+        <div class="herobtns">
+          <a class="hbtn primary" href="https://www.themakersworkbench.com" target="_blank" rel="noopener">Visit TheMakersWorkbench.com</a>
+          <a class="hbtn" href="https://github.com/MakersWorkbench/workbench-toolbox" target="_blank" rel="noopener">View on GitHub</a>
+          <a class="hbtn" href="#/about">About and licenses</a>
+        </div>
+      </div>
     </div>
     <div id="homeBody"></div>
+    <footer class="homefoot">
+      <p class="hack">Hack The World &amp; Make Awesome!</p>
+      <p>Free and open source under the <a href="#/about">Apache License 2.0</a>. No tracking, no analytics, no cookies, no affiliate links.</p>
+      <p><a href="https://www.themakersworkbench.com" target="_blank" rel="noopener">TheMakersWorkbench.com</a> &middot; <a href="https://github.com/MakersWorkbench" target="_blank" rel="noopener">GitHub</a> &middot; <a href="#/about">About</a></p>
+    </footer>
   </section>
 
   <section id="toolHost" aria-label="Tool" hidden></section>
@@ -65,7 +73,6 @@
 <dialog id="keysDialog" aria-labelledby="keysTitle">
   <h2 id="keysTitle">Keyboard shortcuts</h2>
   <dl class="keys">
-    <dt><kbd>/</kbd></dt><dd>Search tools and tabs</dd>
     <dt><kbd>1</kbd> to <kbd>6</kbd></dt><dd>Open a tool from the home screen</dd>
     <dt><kbd>Esc</kbd> or <kbd>Alt</kbd>+<kbd>Left</kbd></dt><dd>Back to all tools</dd>
     <dt><kbd>T</kbd></dt><dd>Change theme</dd>

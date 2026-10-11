@@ -11,3 +11,7 @@
 :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) input[type=text],:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) input[type=number],:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) input:not([type]){min-height:44px}
 :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .fields{grid-template-columns:repeat(auto-fit,minmax(min(165px,100%),1fr))}
 :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .dec-foot a,:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .dec-links a{display:inline-block;padding:10px 4px}
+/* iPhone Safari zooms the page when a field under 16 px gets focus, so keep fields at 16 px on iOS. */
+@supports (-webkit-touch-callout:none){
+  :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) :is(input,select,textarea){font-size:16px!important}
+}

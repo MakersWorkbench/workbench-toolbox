@@ -68,17 +68,6 @@ test('every tab of every tool opens without errors', async ({ page }) => {
   expect(errors).toEqual([]);
 });
 
-test('search finds tabs inside tools and opens them', async ({ page }) => {
-  await page.goto('/');
-  await page.locator('#search').fill('baud');
-  const hit = page.locator('.tabhits a', { hasText: 'UART' }).first();
-  await expect(hit).toBeVisible();
-  await hit.click();
-  await expect(page.locator('.toolwrap[data-tool="embedded"] .tabbar button[aria-selected="true"]')).toContainText('UART');
-  await page.locator('#backBtn').click();
-  await expect(page.locator('#homeView')).toBeVisible();
-});
-
 test('favorites and recents are remembered', async ({ page }) => {
   await page.goto('/');
   await page.locator('.cardwrap').nth(2).locator('.fav').click();
