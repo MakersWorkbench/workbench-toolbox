@@ -1,0 +1,26 @@
+{
+  "decoder": {
+    "repo": "component-marking-decoder",
+    "commit": "951cb85eaa2f19f4671fa4325011680e4acb0b68"
+  },
+  "calculators": {
+    "repo": "circuit-calculators",
+    "commit": "842f1c2739b71ff78b9677888589c499c6440994"
+  },
+  "embedded": {
+    "repo": "embedded-toolkit",
+    "commit": "13f2d66afa3ea4a5e5bb58debcbca49d0488243b"
+  },
+  "power": {
+    "repo": "power-battery",
+    "commit": "ad0252b02d1fd65dcd44a4109d441a6c54e3a01e"
+  },
+  "pcb": {
+    "repo": "pcb-wiring",
+    "commit": "01af4188db75708d1051f4d7442770cf69019ae7"
+  },
+  "bench": {
+    "repo": "bench-tools",
+    "commit": "e8b5a072e708d18e91fff4944bbbb4dd3560fee6"
+  }
+}

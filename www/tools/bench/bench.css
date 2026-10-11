@@ -1,0 +1,140 @@
+/* Copyright 2026 TheMakersWorkbench.com. Licensed under the Apache License, Version 2.0. See LICENSE and NOTICE. */
+/* TMWB Bench Tools. Everything is scoped under .tmwb-bench so it can be embedded in any page. */
+.tmwb-bench{--bg:#262a31;--panel:#2f343c;--field:#1f2328;--line:#434a55;--ink:#e8ecf2;--mute:#9aa5b5;--accent:#4aa3ff;--ok:#7bd88f;--bad:#ff8a80;
+  font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;max-width:760px;margin:0 auto;overflow:hidden}
+.tmwb-bench *{box-sizing:border-box}
+.tmwb-bench [hidden]{display:none!important}
+.tmwb-bench .tabbar{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;padding:8px;background:#1d2025}
+.tmwb-bench .tabbar button{flex:0 0 auto;padding:9px 16px;border:1px solid var(--line);border-bottom:none;background:#2a2e35;color:var(--mute);font:inherit;font-size:15.2px;border-radius:8px 8px 0 0;cursor:pointer;white-space:nowrap}
+.tmwb-bench .tabbar button[aria-selected=true]{background:var(--bg);color:var(--ink);font-weight:600;position:relative;top:1px}
+.tmwb-bench .pane{padding:18px 20px 22px}
+.tmwb-bench .pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.tmwb-bench .pills button,.tmwb-bench .chip{padding:5px 13px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;font:inherit;font-size:14.08px;cursor:pointer}
+.tmwb-bench .pills button[aria-pressed=true],.tmwb-bench .chip.on{background:var(--accent);border-color:var(--accent);color:#06121f;font-weight:600}
+.tmwb-bench .gfx{display:block;width:100%;height:auto;max-height:260px;margin:4px auto 14px}
+.tmwb-bench .fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:10px 12px;margin-bottom:16px}
+.tmwb-bench .field label{display:block;font-size:14.08px;color:var(--mute);margin-bottom:3px}
+.tmwb-bench .sel{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:0 0 0 8px}
+.tmwb-bench .sel i{flex:0 0 16px;height:16px;border-radius:3px;border:1px solid rgba(255,255,255,.35)}
+.tmwb-bench select,.tmwb-bench input[type=text]{width:100%;min-width:0;padding:8px;font:inherit;font-size:15.2px;color:var(--ink);background:transparent;border:none;outline:none}
+.tmwb-bench select option{background:#2f343c;color:#e8ecf2}
+.tmwb-bench .inputrow{display:flex;gap:10px;margin-bottom:8px}
+.tmwb-bench .inputrow .box{flex:1;background:var(--field);border:1px solid var(--line);border-radius:8px;padding:2px 6px;font-size:18.4px}
+.tmwb-bench .inputrow .box:focus-within{border-color:var(--accent)}
+.tmwb-bench .inputrow input{font-size:18.4px;letter-spacing:.04em}
+.tmwb-bench .tryrow{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:8px 0 14px;font-size:13.6px;color:var(--mute)}
+.tmwb-bench .results{display:grid;grid-template-columns:140px 1fr;gap:6px 10px;align-items:center;margin-top:6px}
+.tmwb-bench .results .k{color:var(--mute);text-align:left}
+.tmwb-bench .results .v{background:var(--field);border:1px solid #2a3037;border-radius:5px;padding:7px 10px;text-align:center;font-weight:600;min-height:36px}
+.tmwb-bench .results .v.big{font-size:18.4px}
+.tmwb-bench .notice{font-style:italic;color:var(--mute);margin:10px 0 6px;font-size:14.72px}
+.tmwb-bench .err{color:var(--bad);font-weight:600;margin:10px 0}
+.tmwb-bench .steps{margin:14px 0 0;padding:12px 14px 12px 32px;background:var(--panel);border-radius:8px;font-size:14.72px}
+.tmwb-bench .steps li{margin:2px 0}
+.tmwb-bench .alt{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line)}
+.tmwb-bench .alt h4,.tmwb-bench .detail h3{margin:0 0 6px}
+.tmwb-bench .note{color:var(--mute);font-size:14.4px;margin:8px 0 0}
+.tmwb-bench .bandlist{list-style:none;margin:12px 0 0;padding:0}
+.tmwb-bench .bandlist li{padding:3px 0}
+.tmwb-bench .dot{display:inline-block;width:.9em;height:.9em;border-radius:50%;border:1px solid rgba(255,255,255,.4);vertical-align:-1px;margin-right:8px}
+.tmwb-bench .plist{display:grid;gap:6px;margin:10px 0}
+.tmwb-bench .plist button{display:flex;gap:10px;align-items:baseline;text-align:left;padding:8px 12px;background:var(--panel);border:1px solid var(--line);border-radius:8px;color:var(--ink);font:inherit;cursor:pointer}
+.tmwb-bench .plist button[aria-pressed=true]{border-color:var(--accent);background:#243447}
+.tmwb-bench .plist b{min-width:96px;font-family:ui-monospace,Consolas,monospace}
+.tmwb-bench .plist span{color:var(--mute);font-size:14.08px}
+.tmwb-bench .detail{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-top:10px}
+.tmwb-bench .detail .tag{display:inline-block;background:var(--accent);color:#06121f;font-size:12px;font-weight:700;padding:1px 8px;border-radius:999px;margin-bottom:6px}
+.tmwb-bench .detail dl{display:grid;grid-template-columns:150px 1fr;gap:5px 12px;margin:10px 0}
+.tmwb-bench .detail dt{color:var(--mute)} .tmwb-bench .detail dd{margin:0}
+.tmwb-bench .detail p{margin:6px 0}
+.tmwb-bench .about p{margin:0 0 10px}
+.tmwb-bench .about a{color:var(--accent)}
+@media (max-width:540px){
+  .tmwb-bench .pane{padding:14px 12px 18px}
+  .tmwb-bench .results,.tmwb-bench .detail dl{grid-template-columns:1fr}
+  .tmwb-bench .results .k{margin-top:4px}
+}
+
+.tmwb-bench .reftables h4{margin:14px 0 4px;font-size:15.2px}
+.tmwb-bench .reftables table{border-collapse:collapse;font-size:13.6px;margin:4px 0;width:100%}
+.tmwb-bench .reftables th,.tmwb-bench .reftables td{border:1px solid var(--line);padding:3px 8px;text-align:left}
+.tmwb-bench .reftables th{background:var(--panel)}
+.tmwb-bench details summary{cursor:pointer;font-weight:600}
+
+.tmwb-bench .tabbar button{padding:8px 4px;border:1px solid var(--line);border-radius:8px;background:#2a2e35;color:var(--mute);font:inherit;font-size:13.12px;line-height:1.2;text-align:center;cursor:pointer}
+.tmwb-bench .tabbar button[aria-selected=true]{background:var(--accent);border-color:var(--accent);color:#06121f;font-weight:700;top:0}
+@media (max-width:640px){.tmwb-bench .tabbar{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:380px){.tmwb-bench .tabbar{grid-template-columns:repeat(3,1fr)}}
+.tmwb-bench input[type=number]{width:100%;padding:8px;font:inherit;color:var(--ink);background:transparent;border:none;outline:none}
+
+.tmwb-bench .dec-head{padding:18px 20px 6px}
+.tmwb-bench .dec-title{margin:0 0 6px;font-size:25.6px;line-height:1.2;color:var(--ink)}
+.tmwb-bench .dec-links{display:flex;gap:16px;flex-wrap:wrap;font-size:14.4px}
+.tmwb-bench a{color:var(--accent)}
+.tmwb-bench .dec-foot{padding:12px 20px;border-top:1px solid var(--line);background:#1d2025;color:var(--mute);font-size:13.6px;text-align:center}
+.tmwb-bench .about h3{margin:16px 0 6px;font-size:16px;color:var(--ink)}
+.tmwb-bench .about h3:first-child{margin-top:0}
+
+/* header v2 */
+.tmwb-bench .dec-head{position:relative;text-align:center;padding:26px 22px 24px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='220' viewBox='0 0 420 220' fill='none' stroke='white' stroke-opacity='.11' stroke-width='2'%3E%3Cpath d='M0 40h90l20 20h70M180 60h60l25-25h155M0 120h60l25 25h120l20-20h195M300 220v-50l30-30h90M120 0v38'/%3E%3Ccircle cx='90' cy='40' r='4' fill='white' fill-opacity='.14'/%3E%3Ccircle cx='240' cy='60' r='4' fill='white' fill-opacity='.14'/%3E%3Ccircle cx='85' cy='145' r='4' fill='white' fill-opacity='.14'/%3E%3Ccircle cx='330' cy='140' r='4' fill='white' fill-opacity='.14'/%3E%3Ccircle cx='265' cy='35' r='4' fill='white' fill-opacity='.14'/%3E%3C/svg%3E"),linear-gradient(135deg,#0D2B5E 0%,#17458f 55%,#2a73cf 100%);border-bottom:3px solid #4aa3ff;overflow:hidden}
+.tmwb-bench .dec-head::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(74,163,255,.35),transparent 70%);pointer-events:none}
+.tmwb-bench .dec-hero{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:14px;text-align:center}
+.tmwb-bench .dec-logo{flex:0 0 auto;width:78px;height:78px;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35))}
+.tmwb-bench .dec-eyebrow{font-size:11.52px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9fd0ff;margin-bottom:2px}
+.tmwb-bench .dec-title{margin:0;font-size:29.6px;line-height:1.15;font-weight:800;letter-spacing:-.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.tmwb-bench .dec-tag{margin-top:4px;font-size:16.32px;color:#dcebff}
+.tmwb-bench .dec-intro{position:relative;z-index:1;margin:0 auto 18px;text-align:center;max-width:62ch;color:#c9dcf4;font-size:14.88px;line-height:1.55}
+.tmwb-bench .dec-head .dec-links{position:relative;z-index:1;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.tmwb-bench .dec-btn{display:inline-block;padding:8px 16px;border-radius:9px;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.08);color:#fff;font-size:14.4px;font-weight:600;text-decoration:none;transition:background .15s,transform .15s}
+.tmwb-bench .dec-btn:hover{background:rgba(255,255,255,.2);transform:translateY(-1px)}
+.tmwb-bench .dec-btn-primary{background:#4aa3ff;border-color:#4aa3ff;color:#06121f}
+.tmwb-bench .dec-btn-primary:hover{background:#74b9ff}
+@media (max-width:540px){
+  .tmwb-bench .dec-head{padding:16px 14px 16px}
+  .tmwb-bench .dec-logo{width:54px;height:54px}
+  .tmwb-bench .dec-title{font-size:22.4px}
+  .tmwb-bench .dec-tag{font-size:14.4px}
+  .tmwb-bench .dec-btn{padding:7px 13px;font-size:13.6px}
+}
+
+/* calculator additions */
+.tmwb-bench .calc-block{margin:0 0 6px}
+.tmwb-bench .calc-block + .calc-block{margin-top:22px;padding-top:16px;border-top:1px dashed var(--line)}
+.tmwb-bench .calc-h{margin:0 0 6px;font-size:18px;color:var(--ink)}
+.tmwb-bench .calc-blurb{margin:0 0 14px;color:var(--mute);font-size:14.72px;line-height:1.55}
+.tmwb-bench .fields .field.wide{grid-column:1/-1}
+.tmwb-bench .fbox{background:var(--field);border:1px solid var(--line);border-radius:8px;padding:2px 6px}
+.tmwb-bench .fbox:focus-within{border-color:var(--accent)}
+.tmwb-bench .fbox.computed{background:#243447;border-color:#3b5877}
+.tmwb-bench .fbox input{font-size:17px}
+.tmwb-bench .fields.ohm4{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.tmwb-bench .calc-clear{padding:6px 16px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;font:inherit;font-size:14px;cursor:pointer;margin-bottom:6px}
+.tmwb-bench .calc-clear:hover{border-color:var(--accent)}
+.tmwb-bench .calc-out{margin-top:4px}
+.tmwb-bench .calc-gfx{max-height:230px;color:#c9d4e3}
+.tmwb-bench .svgt{fill:#e8ecf2;font:600 13px system-ui,sans-serif}
+.tmwb-bench .svgt.dim{fill:#9aa5b5;font-weight:500}
+.tmwb-bench .dim{color:var(--mute)}
+.tmwb-bench .tblwrap{overflow-x:auto;margin:14px 0 4px}
+.tmwb-bench .calc-table{border-collapse:collapse;width:100%;font-size:14px}
+.tmwb-bench .calc-table th,.tmwb-bench .calc-table td{border:1px solid var(--line);padding:5px 9px;text-align:left;white-space:nowrap}
+.tmwb-bench .calc-table th{background:var(--panel);color:var(--mute);font-weight:600}
+.tmwb-bench .calc-table tr.best td{background:#243447;font-weight:600}
+.tmwb-bench .results{grid-template-columns:minmax(150px,230px) 1fr}
+@media (max-width:540px){.tmwb-bench .results{grid-template-columns:1fr}}
+
+.tmwb-bench .sheet{background:#fff;color:#111;border-radius:8px;padding:20px 22px;margin-top:14px;font-size:14.5px;overflow-x:auto}
+.tmwb-bench .sheet h3{margin:0 0 10px;font-size:20px;color:#0a2147}
+.tmwb-bench .sheet table{border-collapse:collapse;width:100%;margin:8px 0}
+.tmwb-bench .sheet th,.tmwb-bench .sheet td{border:1px solid #9aa5b5;padding:4px 9px;text-align:left;color:#111}
+.tmwb-bench .sheet th{background:#e6ecf4;font-weight:700}
+.tmwb-bench .sheet p{margin:10px 0;line-height:1.5;color:#222}
+.tmwb-bench .sheet .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tmwb-bench .sheet .sw{display:inline-block;width:46px;height:14px;border:1px solid #333;border-radius:3px;margin-right:9px;vertical-align:-2px}
+.tmwb-bench .sheet .credit{color:#667;font-size:12.5px;margin-top:14px}
+@media (max-width:540px){.tmwb-bench .sheet .two{grid-template-columns:1fr}}
+@media print{
+  body *{visibility:hidden!important}
+  .tmwb-bench .sheet,.tmwb-bench .sheet *{visibility:visible!important}
+  .tmwb-bench .sheet{position:absolute;left:0;top:0;width:100%;border-radius:0;padding:0}
+}

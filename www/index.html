@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Workbench Toolbox</title>
+<meta name="description" content="Every Makers Workbench browser tool in one free app that works offline: component decoder, electronics calculators, embedded, power, PCB and bench tools.">
+<meta name="theme-color" content="#14161a">
+<meta name="color-scheme" content="light dark">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Toolbox">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="shell.css">
+<link rel="stylesheet" href="tools-fixes.css">
+<link rel="stylesheet" href="theme-light.css">
+<link rel="stylesheet" href="print.css" media="print">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar" id="topbar">
+  <button type="button" class="iconbtn" id="backBtn" aria-label="Back to all tools" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+  </button>
+  <div class="brand" id="brand">
+    <img src="icons/icon.svg" alt="" width="28" height="28">
+    <span id="topTitle">Workbench Toolbox</span>
+  </div>
+  <div class="spacer"></div>
+  <button type="button" class="iconbtn" id="themeBtn" aria-label="Theme: follow system"></button>
+  <a class="iconbtn" id="aboutBtn" href="#/about" aria-label="About this app">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg>
+  </a>
+</header>
+
+<div class="banner" id="updateBanner" role="status" hidden>
+  <span>New version available.</span>
+  <button type="button" id="reloadBtn">Reload</button>
+</div>
+
+<main id="main" tabindex="-1">
+  <section id="homeView" aria-label="All tools">
+    <div class="hero">
+      <h1>Workbench Toolbox</h1>
+      <p>Every Makers Workbench tool in one place. Free, open source, and it works offline.</p>
+    </div>
+    <div class="searchwrap">
+      <label for="search" class="sr">Search tools and tabs</label>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <input id="search" type="search" placeholder="Search tools and tabs (try LED, baud, or 104)" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search">
+    </div>
+    <div id="homeBody"></div>
+  </section>
+
+  <section id="toolHost" aria-label="Tool" hidden></section>
+  <section id="aboutView" aria-label="About" hidden></section>
+</main>
+
+<div class="loading" id="loading" hidden>Loading tool...</div>
+
+<dialog id="keysDialog" aria-labelledby="keysTitle">
+  <h2 id="keysTitle">Keyboard shortcuts</h2>
+  <dl class="keys">
+    <dt><kbd>/</kbd></dt><dd>Search tools and tabs</dd>
+    <dt><kbd>1</kbd> to <kbd>6</kbd></dt><dd>Open a tool from the home screen</dd>
+    <dt><kbd>Esc</kbd> or <kbd>Alt</kbd>+<kbd>Left</kbd></dt><dd>Back to all tools</dd>
+    <dt><kbd>T</kbd></dt><dd>Change theme</dd>
+    <dt><kbd>?</kbd></dt><dd>Show this list</dd>
+  </dl>
+  <form method="dialog"><button class="btn">Close</button></form>
+</dialog>
+
+<script src="registry.js"></script>
+<script src="shell.js"></script>
+</body>
+</html>

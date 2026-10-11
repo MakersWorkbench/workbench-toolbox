@@ -1,0 +1,16 @@
+/* Light theme for the vendored tools. The tools ship dark only, so the shell re-maps their color variables
+   and the few hard-coded dark colors when data-theme="light". The tool files themselves are not edited. */
+[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench){--bg:#ffffff;--panel:#eef2f8;--field:#f7f9fc;--line:#c3cedf;--ink:#14213d;--mute:#4b5a73;--accent:#2a64d6;--ok:#146c2e;--bad:#b3261e}
+[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .tabbar,[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .dec-foot{background:#e4eaf3}
+[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .tabbar button{background:#f4f7fb;color:var(--mute)}
+[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .tabbar button[aria-selected=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) select option{background:#fff;color:#14213d}
+[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .results .v{border-color:var(--line)}
+[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .plist button[aria-pressed=true],[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .fbox.computed,[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .calc-table tr.best td{background:#dce8fb;border-color:#9db9e8}
+[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .pills button[aria-pressed=true],[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .chip.on,[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .detail .tag{background:var(--accent);border-color:var(--accent);color:#fff}
+[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .calc-gfx,[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .gfx{color:#2b3a55}
+[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .svgt{fill:#14213d}
+[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .svgt.dim{fill:#4b5a73}
+[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) a{color:var(--accent)}
+[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .dec-head a,[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .dec-btn{color:#fff}
+[data-theme=light] :is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .dec-btn-primary{background:#4aa3ff;border-color:#4aa3ff;color:#06121f}

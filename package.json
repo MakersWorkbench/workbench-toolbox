@@ -1,0 +1,24 @@
+{
+  "name": "workbench-toolbox",
+  "version": "1.0.0",
+  "description": "One installable, offline-first app with every Makers Workbench browser tool.",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "commonjs",
+  "scripts": {
+    "sync": "node scripts/sync-tools.mjs",
+    "build:index": "node scripts/build-index.mjs",
+    "build:icons": "node scripts/make-icons.mjs",
+    "build:sw": "node scripts/build-sw.mjs",
+    "build": "npm run build:index && npm run build:sw",
+    "serve": "node scripts/serve.mjs",
+    "test:unit": "node --test tests/tools/*/*.test.js tests/*.test.js",
+    "test:e2e": "playwright test",
+    "test": "npm run test:unit && npm run test:e2e",
+    "screenshots": "node scripts/screenshots.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.49.1",
+    "pngjs": "7.0.0"
+  }
+}

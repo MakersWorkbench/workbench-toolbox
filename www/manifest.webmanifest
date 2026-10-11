@@ -1,0 +1,23 @@
+{
+  "name": "Workbench Toolbox",
+  "short_name": "Toolbox",
+  "description": "Every Makers Workbench tool in one free app that works offline.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#14161a",
+  "theme_color": "#0D2B5E",
+  "categories": ["utilities", "productivity", "education"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Electronics Calculators", "url": "./#/t/calculators", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Component Marking Decoder", "url": "./#/t/decoder", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

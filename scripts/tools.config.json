@@ -1,0 +1,51 @@
+{
+  "tools": [
+    {
+      "id": "decoder", "repo": "component-marking-decoder", "name": "Component Marking Decoder",
+      "tagline": "Decode the markings on resistors, capacitors, diodes and more",
+      "rootId": "tmwb-dec", "rootClass": "tmwb-dec", "css": "decoder.css",
+      "scripts": ["js/resistor-logic.js","js/smd-logic.js","js/cap-logic.js","js/ind-logic.js","js/parts-data.js","js/xtal-logic.js","js/passive-logic.js"],
+      "app": "js/app.js", "mountAttrs": {"data-hash": "off", "data-heading": "h2"}, "tests": []
+    },
+    {
+      "id": "calculators", "repo": "circuit-calculators", "name": "Electronics Calculators",
+      "tagline": "The everyday electronics math, with the working shown",
+      "rootId": "tmwb-calc", "rootClass": "tmwb-calc", "css": "calc.css",
+      "scripts": ["js/calc-logic.js"], "app": "js/calc-app.js", "mountAttrs": {"data-heading": "h2"},
+      "tests": ["tests/calc-logic.test.js"]
+    },
+    {
+      "id": "embedded", "repo": "embedded-toolkit", "name": "Embedded Systems Toolkit",
+      "tagline": "Calculators for Arduino, ESP32, and Pico projects",
+      "rootId": "tmwb-emb", "rootClass": "tmwb-emb", "css": "emb.css",
+      "scripts": ["js/embedded-logic.js"], "app": "js/embedded-app.js", "mountAttrs": {"data-heading": "h2"},
+      "tests": ["tests/embedded-logic.test.js"]
+    },
+    {
+      "id": "power", "repo": "power-battery", "name": "Power and Battery Tools",
+      "tagline": "Regulators, batteries, and power supplies",
+      "rootId": "tmwb-pwr", "rootClass": "tmwb-pwr", "css": "pwr.css",
+      "scripts": ["js/power-logic.js"], "app": "js/power-app.js", "mountAttrs": {"data-heading": "h2"},
+      "tests": ["tests/power-logic.test.js"]
+    },
+    {
+      "id": "pcb", "repo": "pcb-wiring", "name": "PCB and Wiring Tools",
+      "tagline": "Calculators for PCB traces, vias, spacing, and wire gauge",
+      "rootId": "tmwb-pcb", "rootClass": "tmwb-pcb", "css": "pcb.css",
+      "scripts": ["js/pcb-logic.js"], "app": "js/pcb-app.js", "mountAttrs": {"data-heading": "h2"},
+      "tests": ["tests/pcb-logic.test.js"]
+    },
+    {
+      "id": "bench", "repo": "bench-tools", "name": "Bench Tools",
+      "tagline": "Converters, finders, and cheat sheets for the workbench",
+      "rootId": "tmwb-bench", "rootClass": "tmwb-bench", "css": "bench.css",
+      "scripts": ["js/bench-logic.js"], "app": "js/bench-app.js", "mountAttrs": {"data-heading": "h2"},
+      "tests": ["tests/bench-logic.test.js"]
+    }
+  ],
+  "patches": [
+    {"tool": "calculators", "file": "js/calc-app.js", "from": "name: 'Circuit Calculators'", "to": "name: 'Electronics Calculators'", "why": "UI name is Electronics Calculators"},
+    {"tool": "calculators", "file": "js/calc-app.js", "from": "/* Circuit Calculators UI.", "to": "/* Electronics Calculators UI.", "why": "comment"},
+    {"tool": "pcb", "file": "js/pcb-app.js", "from": "tag: 'Traces, vias, spacing, and wire for your builds'", "to": "tag: 'Calculators for PCB traces, vias, spacing, and wire gauge'", "why": "official PCB tagline"}
+  ]
+}
