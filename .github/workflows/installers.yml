@@ -6,6 +6,11 @@ on:
     tags: ['v*']
     branches: ['claude/**']
   workflow_dispatch:
+    inputs:
+      release_version:
+        description: 'Version to publish as a GitHub Release (for example 1.0.0). Leave empty to only build and keep workflow artifacts.'
+        required: false
+        default: ''
 permissions:
   contents: write
 jobs:
@@ -69,7 +74,7 @@ jobs:
         with: { name: installer-android, path: out/*, if-no-files-found: error }
 
   release:
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: startsWith(github.ref, 'refs/tags/v') || inputs.release_version != ''
     needs: [desktop, android]
     runs-on: ubuntu-latest
     steps:
@@ -78,6 +83,8 @@ jobs:
       - run: ls -R dist
       - uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ inputs.release_version != '' && format('v{0}', inputs.release_version) || github.ref_name }}
+          target_commitish: ${{ github.sha }}
           files: dist/*
           generate_release_notes: true
           body: |
