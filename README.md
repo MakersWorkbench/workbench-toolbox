@@ -27,7 +27,8 @@ Download from the [Releases page](https://github.com/MakersWorkbench/workbench-t
 | `.msi` or `-setup.exe` | Windows 10 and 11 |
 | `.dmg` | macOS (Apple silicon and Intel) |
 | `.AppImage` or `.deb` | Linux (AppImage: right-click, Properties, allow executing; or `chmod +x`) |
-| `.apk` | Android sideloading (allow "install unknown apps" for your browser or file manager) |
+| `.apk` | Android sideloading (an APK is the install file for an Android app; allow "install unknown apps" for your browser or file manager) |
+| `.aab` | Android App Bundle, the format Google Play wants. This one is unsigned, so it is for developers only, not for installing |
 
 The installers are **not code-signed** yet (signing costs money, see `docs/OWNER-STEPS.md`), so your system warns you the first time. The app is safe to open if you downloaded it from this repository's Releases page.
 
