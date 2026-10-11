@@ -53,7 +53,8 @@ jobs:
         with: { node-version: 22, cache: npm }
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: 17 }
-      - uses: android-actions/setup-android@v3
+      - name: Accept Android SDK licenses (the SDK is preinstalled on the runner)
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
       - run: npm ci
       - run: npx cap sync android
       - name: Build debug-signed APK and unsigned AAB (no secrets needed)
