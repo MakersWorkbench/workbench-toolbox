@@ -1,0 +1,7 @@
+{
+  "appId": "com.themakersworkbench.toolbox",
+  "appName": "Workbench Toolbox",
+  "webDir": "www",
+  "android": { "allowMixedContent": false },
+  "server": { "androidScheme": "https" }
+}
