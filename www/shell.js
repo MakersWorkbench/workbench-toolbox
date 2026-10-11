@@ -64,7 +64,10 @@
     var on = favs.indexOf(t.id) >= 0; f.setAttribute('aria-pressed', on);
     f.setAttribute('aria-label', (on ? 'Remove ' : 'Add ') + t.name + (on ? ' from favorites' : ' to favorites'));
     f.addEventListener('click', function () { toggleFav(t.id); });
-    wrap.appendChild(f); return wrap;
+    wrap.appendChild(f);
+    var links = el('div', 'cardlinks');
+    [[t.wiki, 'User guide'], [t.repoUrl, 'GitHub']].forEach(function (l) { var x = el('a', null, l[1]); x.href = l[0]; x.target = '_blank'; x.rel = 'noopener'; links.appendChild(x); });
+    wrap.appendChild(links); return wrap;
   }
   function section(title, tools) {
     var s = el('div'); s.appendChild(el('h2', 'sec', title));

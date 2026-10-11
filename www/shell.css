@@ -42,10 +42,25 @@ a{color:var(--accent)}
 .banner button{min-height:44px;padding:0 18px;border-radius:10px;border:2px solid #fff;background:#fff;color:var(--navy);font:inherit;font-weight:700;cursor:pointer}
 
 main{max-width:1040px;margin:0 auto;padding:16px 16px calc(32px + var(--safe-b));outline:0}
-.hero{padding:8px 0 16px}
-.hero h1{margin:0 0 4px;font-size:30px;line-height:1.15;letter-spacing:-.01em}
-.hero p{margin:0;color:var(--mute);max-width:60ch}
-
+.hero{margin:0 0 20px;border-radius:20px;overflow:hidden;color:#fff;
+  background:radial-gradient(900px 300px at 85% -10%,rgba(57,121,244,.55),transparent 60%),linear-gradient(135deg,#0a2147 0%,#0D2B5E 55%,#17458f 100%);
+  border:1px solid rgba(255,255,255,.16);position:relative}
+.hero::before{content:"";position:absolute;inset:0;opacity:.18;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='220' viewBox='0 0 420 220' fill='none' stroke='white' stroke-width='1.5'%3E%3Cpath d='M0 40h90l30 30h70M120 70v60h60M300 0v50l30 30h90M200 220v-40l40-40h80M0 170h60l25-25'/%3E%3Ccircle cx='190' cy='70' r='4'/%3E%3Ccircle cx='180' cy='130' r='4'/%3E%3Ccircle cx='330' cy='80' r='4'/%3E%3Ccircle cx='320' cy='140' r='4'/%3E%3C/svg%3E")}
+.hero-in{position:relative;padding:28px 24px 26px;text-align:center}
+.logoplate{display:inline-block;background:#fff;border-radius:16px;padding:12px 20px;box-shadow:0 6px 24px rgba(0,0,0,.28);margin-bottom:18px}
+.logoplate img{display:block;width:min(420px,70vw);height:auto}
+.hero h1{margin:0 0 8px;font-size:32px;line-height:1.15;letter-spacing:-.01em;font-weight:800;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.hero .lede{margin:0 auto 18px;max-width:62ch;color:#dbe8fb;font-size:16px;line-height:1.55}
+.herobtns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hbtn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:12px;border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.08);color:#fff;text-decoration:none;font-weight:700;font-size:15px}
+.hbtn:hover{background:rgba(255,255,255,.18)}
+.hbtn.primary{background:#4aa3ff;border-color:#4aa3ff;color:#06121f}
+.hbtn.primary:hover{background:#74b9ff}
+.homefoot{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);text-align:center;color:var(--mute);font-size:14px}
+.homefoot p{margin:6px 0}
+.homefoot .hack{color:var(--ink);font-weight:800;font-size:17px;margin-top:0}
+.homefoot a{display:inline-block;padding:10px 4px}
 .searchwrap{position:relative;margin:4px 0 20px}
 .searchwrap svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:20px;height:20px;fill:none;stroke:var(--mute);stroke-width:2;stroke-linecap:round;pointer-events:none}
 .searchwrap input{width:100%;min-height:52px;padding:0 16px 0 44px;font:inherit;font-size:16px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px}
@@ -53,8 +68,13 @@ main{max-width:1040px;margin:0 auto;padding:16px 16px calc(32px + var(--safe-b))
 
 h2.sec{margin:22px 0 10px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:700}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
-.card{position:relative;display:flex;gap:14px;align-items:flex-start;padding:16px;min-height:88px;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);color:inherit;text-decoration:none;cursor:pointer;text-align:left;font:inherit;width:100%}
-.card:hover{border-color:var(--blue)}
+.card{position:relative;display:flex;gap:14px;align-items:flex-start;padding:16px;min-height:88px;background:transparent;border:0;border-radius:16px 16px 0 0;color:inherit;text-decoration:none;cursor:pointer;text-align:left;font:inherit;width:100%}
+.cardwrap{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.cardwrap:hover,.cardwrap:focus-within{border-color:var(--blue)}
+.cardwrap .card{flex:1}
+.cardlinks{display:flex;gap:4px;border-top:1px solid var(--line);padding:0 8px}
+.cardlinks a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;font-size:14px;font-weight:600;text-decoration:none}
+.cardlinks a:hover{text-decoration:underline}
 .card .tile{flex:0 0 52px;height:52px;border-radius:14px;background:var(--tile);display:flex;align-items:center;justify-content:center}
 .card .tile svg{width:30px;height:30px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .card .txt{min-width:0;flex:1;padding-right:44px}
@@ -103,11 +123,13 @@ kbd{font:600 13px ui-monospace,Consolas,monospace;background:var(--surface2);bor
 /* Tools inside the shell: let them fill a phone screen edge to edge without a page-level scrollbar */
 #toolHost [class^="tmwb-"]{max-width:860px;width:100%}
 @media (max-width:600px){
+  .hero-in{padding:22px 16px 20px}
+  .hero h1{font-size:26px}
   main{padding:12px 12px calc(28px + var(--safe-b))}
-  .hero h1{font-size:25px}
   .grid{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:no-preference){
   .card,.iconbtn{transition:border-color .15s,background .15s}
 }
 @media (hover:none),(pointer:coarse){.kbdhint{display:none}}
+.brand img{background:#fff;border-radius:8px;padding:2px}
