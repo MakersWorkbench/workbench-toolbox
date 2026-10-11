@@ -85,7 +85,7 @@ jobs:
         with:
           tag_name: ${{ inputs.release_version != '' && format('v{0}', inputs.release_version) || github.ref_name }}
           target_commitish: ${{ github.sha }}
-          files: dist/*
+          files: dist/**/*
           generate_release_notes: true
           body: |
             Free and open source (Apache-2.0). Installers are unsigned, so Windows SmartScreen and macOS Gatekeeper will warn the first time. See "Install" in the README for how to open the app anyway.
