@@ -233,8 +233,9 @@
 
   /* ---------- offline support and update flow ---------- */
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-    var refreshing = false;
-    navigator.serviceWorker.addEventListener('controllerchange', function () { if (refreshing) return; refreshing = true; location.reload(); });
+    var refreshing = false, hadController = !!navigator.serviceWorker.controller;
+    // Reload only when an update takes over, never on the very first install.
+    navigator.serviceWorker.addEventListener('controllerchange', function () { if (refreshing || !hadController) return; refreshing = true; location.reload(); });
     navigator.serviceWorker.register('sw.js').then(function (reg) {
       function offer(w) { $('updateBanner').hidden = false; $('reloadBtn').onclick = function () { w.postMessage('SKIP_WAITING'); }; }
       if (reg.waiting && navigator.serviceWorker.controller) offer(reg.waiting);
