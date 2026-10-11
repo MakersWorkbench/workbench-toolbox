@@ -1,0 +1,13 @@
+Component Marking Decoder
+Copyright 2026 TheMakersWorkbench.com (https://www.themakersworkbench.com)
+
+Developed and Maintained by TheMakersWorkbench.com
+Project: https://github.com/MakersWorkbench/component-marking-decoder
+
+This product is licensed under the Apache License, Version 2.0.
+Derivative works must retain this NOTICE and the attribution above, as
+described in section 4 of the License.
+
+The layout of this tool was inspired by the desktop application
+ResistorDecoder by VoxelCubes (https://github.com/VoxelCubes/ResistorDecoder).
+No code from that project was copied.

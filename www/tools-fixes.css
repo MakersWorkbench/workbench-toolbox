@@ -1,0 +1,13 @@
+/* Shell-level fixes for the vendored tools, scoped under their own root classes. The tool files are not edited.
+   1. Phone layout: tab buttons may wrap instead of overflowing the grid (the tools set nowrap).
+   2. Touch targets: every control is at least 44 px tall.
+   3. The tools were written for a 760 px column, so let them use the shell width on desktop but not wider than 860 px. */
+:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .tabbar button{white-space:normal;min-width:0;min-height:44px;overflow-wrap:anywhere;display:flex;align-items:center;justify-content:center}
+:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .tabbar{grid-template-columns:repeat(auto-fill,minmax(108px,1fr))}
+@media (min-width:700px){:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .tabbar{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}}
+:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) button,:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .dec-btn,:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .chip,:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) select{min-height:44px}
+:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .dec-btn{display:inline-flex;align-items:center;justify-content:center}
+:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .sel,:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .inputrow .box{min-height:44px}
+:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) input[type=text],:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) input[type=number],:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) input:not([type]){min-height:44px}
+:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .fields{grid-template-columns:repeat(auto-fit,minmax(min(165px,100%),1fr))}
+:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .dec-foot a,:is(.tmwb-dec,.tmwb-calc,.tmwb-emb,.tmwb-pwr,.tmwb-pcb,.tmwb-bench) .dec-links a{display:inline-block;padding:10px 4px}

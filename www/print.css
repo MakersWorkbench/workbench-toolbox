@@ -1,0 +1,7 @@
+/* Printing: tools mark their cheat sheets with .sheet; print only that, black on white, no app chrome. */
+@page{margin:14mm}
+@media print{
+  .topbar,.banner,.skip,.loading,.hero,.searchwrap{display:none!important}
+  body{background:#fff!important;color:#000!important}
+  main{padding:0!important;max-width:none!important}
+}

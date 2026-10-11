@@ -1,0 +1,369 @@
+WORKBENCH TOOLBOX
+Copyright 2026 TheMakersWorkbench.com. Licensed under the Apache License, Version 2.0.
+See https://www.apache.org/licenses/LICENSE-2.0 for the full text. The LICENSE file in the source repository holds the same text.
+Affiliate links: none in this app.
+
+========================================================================
+Component Marking Decoder (source: https://github.com/MakersWorkbench/component-marking-decoder)
+========================================================================
+
+--- NOTICE ---
+Component Marking Decoder
+Copyright 2026 TheMakersWorkbench.com (https://www.themakersworkbench.com)
+
+Developed and Maintained by TheMakersWorkbench.com
+Project: https://github.com/MakersWorkbench/component-marking-decoder
+
+This product is licensed under the Apache License, Version 2.0.
+Derivative works must retain this NOTICE and the attribution above, as
+described in section 4 of the License.
+
+The layout of this tool was inspired by the desktop application
+ResistorDecoder by VoxelCubes (https://github.com/VoxelCubes/ResistorDecoder).
+No code from that project was copied.
+
+--- SOURCES.md ---
+# Sources and verification record
+
+This file records where the tables and values in the Component Marking Decoder were checked, and where a value could not be confirmed or differs between manufacturers. The audit was done in October 2026. If you find a mistake, please open an issue and cite the datasheet or standard.
+
+**How to read the status column.** *Confirmed* means a published source agreed with the value. *Varies* means different manufacturers publish different values, and the tool says so. *Unverified* means I could not find a published source, so the tool either hedges the wording or leaves the entry out.
+
+## Color codes and tables
+
+| Item | Status | Source |
+|---|---|---|
+| E96 value list (EIA-96 codes 01 to 96) | Confirmed. The 96 values match the published list. | [Wikipedia, E series of preferred numbers](https://en.wikipedia.org/wiki/E_series_of_preferred_numbers) |
+| E24 value list | Confirmed | Same source |
+| EIA-96 multiplier letters | Confirmed against common references | [SMD resistor code reference, xDevs](https://xdevs.com/guide/rescode/) |
+| Resistor color digits, multipliers, tolerance colors | Confirmed | [Wikipedia, Electronic color code (IEC 60062)](https://en.wikipedia.org/wiki/Electronic_color_code) |
+| Resistor temperature coefficient colors (black 250, brown 100, red 50, orange 15, yellow 25, green 20, blue 10, violet 5, grey 1 ppm/K) | Confirmed. A few references leave green and grey blank. | [Panasonic resistor technical page](https://industrial.panasonic.com/tw/ds/ss/technical/b27) |
+| Inductor color band tolerance (brown 1, red 2, gold 5, silver 10, no band 20 percent) | Confirmed for these four. Other colors were removed because no source supported them. | [Inductor color code reference](https://www.electronics2000.co.uk/calc/inductor-code-calculator.php) |
+
+## Capacitors
+
+| Item | Status | Source |
+|---|---|---|
+| 3-digit code and multiplier digits (8 = x0.01, 9 = x0.1) | Confirmed | [QSL.net capacitor codes](https://qsl.net/yo5ofh/doc/capacitors.htm) |
+| Tolerance letters B, C, D, F, G, H, J, K, M, P, Z | Confirmed for D through Z. B and C follow the common EIA table. | [Electronics Notes capacitor codes](https://www.electronics-notes.com/articles/electronic_components/capacitors/capacitor-codes-markings.php) |
+| EIA-198 two-character letters | Confirmed against the DigiKey reference, which lists lowercase a as 2.6. Some other tables show 2.5, so the tool says so. | [DigiKey, Surface Mount Capacitors and their Markings](https://forum.digikey.com/t/surface-mount-capacitors-and-their-markings/30122) |
+| EIA two-character voltage codes (0E, 0G, 0L, 0J, 1A through 1U, 2A through 2K) | Confirmed. The earlier 1K = 80 V entry was wrong and was removed. The 0K and 3A codes were not confirmed and are not included. | DigiKey reference above and Electronics Notes |
+| Tantalum voltage letters (e 2.5, G 4, J 6.3, A 10, C 16, D 20, E 25, V 35, T 50 or H 50) | Confirmed. Makers use T or H for 50 V, so both are accepted. | [Kyocera AVX TAJ datasheet](https://datasheets.kyocera-avx.com/TAJ_ESCC.pdf) and Electronics Notes |
+| Tantalum polarity (stripe or bevel marks positive) | Confirmed. One infographic reviewed during development showed the opposite, and it was disregarded. | Manufacturer datasheets |
+
+## Varistors, thermistors, fuses, ferrites, pots
+
+| Item | Status | Source |
+|---|---|---|
+| 14D471K = 14 mm disc, 470 V, K = +/-10 percent, 300 V AC, 385 V DC | Confirmed | [Bourns MOV-14D471K at DigiKey](https://www.digikey.at/en/products/detail/bourns-inc/MOV-14D471K/2799087), [Bourns MOV-10D datasheet](https://bourns.com/docs/product-datasheets/mov-10dxxxkc.pdf) |
+| S14K275 = 275 V AC, 350 V DC, 430 V | Confirmed | [TDK S14K275 listing](https://www.ozdisan.com/en/p/varistors-863/epcos-tdk-s14k275-355923) |
+| Varistor tolerance letters other than K | Unverified. Only K is accepted; other letters are flagged. | Bourns datasheet lists K only |
+| AC rating about 0.64 and DC rating about 0.82 times the 1 mA varistor voltage | Derived from the catalog values above and stated as an estimate | Same sources |
+| Clamping range 1.6 to 1.8 times varistor voltage | Estimate. One listing gives 775 V for the 14D471K. | Distributor listing for the 14D471K |
+| Fuse breaking capacity H 1500 A, E 150 A, L 35 A or 10 times rated current | Confirmed | [Littelfuse 5x20 mm IEC fuse cap marking guide](https://m.littelfuse.com/~/media/files/littelfuse/technical-resources/documents/reference-documents/littelfuse_5x20mm-iec-fuse-cap-marking_guide.pdf), Bel 5HT datasheets |
+| Fuse speed codes FF, F, M, T, TT | Confirmed | Littelfuse guide above |
+| Semitec 103AT-2: 10 kohm at 25 C, B25/85 = 3435 K | Confirmed | [Semitec 103AT-2 at DigiKey](https://forum.digikey.com/t/semitec-ntc-103at-2/18380) |
+| Potentiometer taper letters (A log, B linear, C reverse log in Asia and the US; Europe differs) | Confirmed, with the regional difference stated | [Wikipedia, Potentiometer](https://en.wikipedia.org/wiki/Potentiometer) |
+| Murata BLM size codes 15 = 0402, 18 = 0603, 21 = 0805, 41 = 1806 | Confirmed. Other size codes were removed as unverified. | [Murata BL series breakdown](https://forum.digikey.com/t/murata-ferrite-bead-bl-series-part-number-breakdown/733) and distributor listings |
+
+## Crystals, resonators, and filters
+
+| Item | Status | Source |
+|---|---|---|
+| 10.7 MHz ceramic filter dot colors (black 10.64, blue 10.67, red 10.70, orange 10.73, white 10.76 MHz) | Confirmed against Murata catalog data | [Murata SFE10.7MA catalog data](https://www.alldatasheet.net/html-pdf/1424494/MURATA1/SFECF10M7GF00-R0/8943/25/SFECF10M7GF00-R0.html) |
+| Murata CSTLS series meaning (3-terminal leaded, built-in capacitors) and M as the decimal point (16M0 = 16.0 MHz) | Confirmed. The tolerance and load capacitance characters are not decoded. | Murata CSTLS distributor listings |
+| Crystal load capacitor formula CL = C1 x C2 / (C1 + C2) + stray | Standard formula. The 4 pF stray value is an assumption and is stated. | General practice |
+
+## SMD marking codes
+
+| Marking | Part | Status |
+|---|---|---|
+| A7, A4, A6 | BAV99, BAV70, BAS16 | Confirmed ([Farnell BA-series datasheet](https://www.farnell.com/datasheets/2182684.pdf) and distributor listings) |
+| 1E, 1F, 1G and 3E, 3F, 3G | BC847A/B/C and BC857A/B/C | Confirmed ([Nexperia BC847 series](https://nexperia.com/group/bc847x-series)). BC857B 3F confirmed; 3E and 3G follow the same pattern. |
+| 1P | MMBT2222A | Confirmed ([Nexperia PMBT2222A datasheet](https://static.chipdip.ru/lib/429/DOC012429960.pdf)) |
+| T4 | 1N4148W (SOD-123) | Confirmed in several datasheets |
+| L4, L42, L43, L44 | BAT54, A, C, S | Partly supported (distributor and reference lists). Makers add prefixes. |
+| 1AM | MMBT3904 | Used by some makers. Diodes Inc. uses a different code. Varies. |
+| 2A | MMBT3906 | Reported, not confirmed in a datasheet. Varies. |
+| A09T, A19T | AO3400A, AO3401A | Third-party sources only. Varies. |
+| M7 | SMA 1 A 1000 V rectifier | The marking is the part name. |
+
+## Semiconductor ratings
+
+Ratings and pinouts in `js/parts-data.js` are typical values from the manufacturer datasheets and distributor listings found during the audit. Where manufacturers differ, the entry says so. Notable cases:
+
+| Part | What differs |
+|---|---|
+| 2N3904, BC547, PN2222A, S8050 and S8550 | TO-92 pin order differs between manufacturers (for example BC547 is C-B-E at Fairchild and onsemi, E-B-C at NXP). The entries state each order. |
+| 2N7000 and BS170 | Drain and source order differs between datasheet revisions and makers. |
+| PN2222A | Maximum collector current is 600 mA at NXP and 1 A at Fairchild. |
+| AMS1117 | Dropout and maximum input voltage differ across makers (about 12 to 30 V listed). The tool does not state a single value. |
+| LM317 | The tool states a range for the input to output difference. |
+| ATmega328P | 40 mA per pin is the absolute maximum. The 20 mA figure is a board-vendor convention, not a Microchip specification, and the entry says so. |
+| FQP30N06L | onsemi lists last shipments, so the entry notes availability. |
+| 1N4148 | Continuous current is 200 mA in the NXP datasheet and 300 mA elsewhere. |
+| BAT54 | Forward current is 200 mA at Diodes Inc. and 300 mA in the ST datasheet. |
+
+## Not verified from a primary source
+
+These came from general knowledge or secondary summaries and are worded cautiously or flagged:
+
+- The exact value of lowercase `a` in EIA-198 (2.6 per DigiKey, 2.5 in some tables).
+- Murata ceramic resonator tolerance and load capacitance characters after the frequency field.
+- The LM2596 5-pin pin numbering (stated with a prompt to confirm).
+- MCP1700 pin order per package (the entry tells you to check the datasheet).
+- AO3400A exact on-resistance and threshold ranges (listings disagree).
+
+========================================================================
+Electronics Calculators (source: https://github.com/MakersWorkbench/circuit-calculators)
+========================================================================
+
+--- NOTICE ---
+Circuit Calculators (TMWB Electronics Calculators)
+Copyright 2026 TheMakersWorkbench.com (https://www.themakersworkbench.com)
+
+Developed and Maintained by TheMakersWorkbench.com
+
+This product is licensed under the Apache License, Version 2.0.
+Derivative works must retain this NOTICE and the attribution above, as
+described in section 4 of the License.
+
+--- SOURCES.md ---
+# Sources and constants
+
+Every formula, table, and constant in the calculators, and where it comes from. Checked when the tool was written. If you find an error, please open an issue.
+
+## Preferred-number series
+
+E6, E12, E24, E48, and E96 follow IEC 60063. E48 is every other E96 value. The test suite checks the series lengths (6, 12, 24, 48, 96).
+
+## Ohm's law and power
+
+V = I × R, P = V × I = I²R = V²/R. Recommended resistor rating is the next standard size (1/8, 1/4, 1/2, 1, 2, 3, 5, 10, 25, 50, 100 W) at least 2× the dissipation, a common 50 % derating rule of thumb.
+
+## LED resistor
+
+R = (Vs − n × Vf) ÷ I for LEDs in series, and one resistor per LED in parallel. Rounds up to the next standard value so current does not exceed the target.
+
+## Voltage divider
+
+Vout = Vin × R2 ÷ (R1 + R2). Output impedance is R1 ∥ R2. Loaded output replaces R2 with R2 ∥ Rload.
+
+## Series and parallel
+
+Series resistors and parallel capacitors add. Parallel resistors and series capacitors combine as 1 ÷ (1/a + 1/b + ...).
+
+## RC filter and reactance
+
+τ = RC, f_c = 1 ÷ (2πRC), 10 to 90 % rise time 2.2τ. X_L = 2πfL, X_C = 1 ÷ (2πfC), f₀ = 1 ÷ (2π√(LC)).
+
+## 555 timer
+
+Astable: f = 1.44 ÷ ((R1 + 2×R2) × C), high time 0.693 × (R1 + R2) × C, low time 0.693 × R2 × C. Monostable: T = 1.1 × R × C. Standard formulas from the 555 datasheets (Texas Instruments NE555, SE555).
+
+## LM317
+
+Vout = 1.25 V × (1 + R2 ÷ R1) + I_ADJ × R2, with a typical I_ADJ of 50 µA and about 3 V of dropout headroom. From the Texas Instruments LM317 datasheet.
+
+## Wire gauge
+
+Diameter = 0.127 mm × 92^((36 − n) ÷ 39) (ASTM B258). Resistance uses the resistivity of annealed copper, 1.724 × 10⁻⁸ Ω·m at 20 °C (22 AWG works out to 0.6438 mm and about 52.96 Ω per km). Using 1.678 × 10⁻⁸ Ω·m instead lowers results by about 3 %. This is not an ampacity table.
+
+## I²C pull-up
+
+Maximum: R ≤ t_r ÷ (0.8473 × C_b), where 0.8473 is the RC time from 30 % to 70 % of VDD. Minimum: R ≥ (VDD − V_OL) ÷ I_OL. Limits from the NXP I²C-bus specification (UM10204): t_r of 1000 / 300 / 120 ns, C_b of 400 / 400 / 550 pF, and I_OL of 3 / 3 / 20 mA for Standard, Fast, and Fast-mode Plus. V_OL is 0.4 V (0.2 × VDD when VDD is 2 V or below).
+
+## Battery life
+
+Average current = active × duty + sleep × (1 − duty). Run time = capacity × usable fraction ÷ average current. Self-discharge, temperature, and cut-off voltage are not modeled.
+
+## BJT switch
+
+Base current = load current ÷ forced beta (10 is the usual choice). Rb = (V_drive − V_BE) ÷ I_B, rounded down to an E24 value.
+
+========================================================================
+Embedded Systems Toolkit (source: https://github.com/MakersWorkbench/embedded-toolkit)
+========================================================================
+
+--- NOTICE ---
+Embedded Systems Toolkit (TMWB Embedded Toolkit)
+Copyright 2026 TheMakersWorkbench.com (https://www.themakersworkbench.com)
+
+Developed and Maintained by TheMakersWorkbench.com
+
+This product is licensed under the Apache License, Version 2.0.
+Derivative works must retain this NOTICE and the attribution above, as
+described in section 4 of the License.
+
+--- SOURCES.md ---
+# Sources and constants
+
+## ADC
+
+Counts = Vin ÷ Vref × 2^n (floor), or ÷ (2^n − 1) with rounding. The Arduino reference documents `analogRead()` as 0 to 1023 on 10-bit boards. The ESP32 accuracy note (about 0.15 to 2.45 V at 11 dB attenuation) follows Espressif's ADC documentation. Check your chip revision.
+
+## ADC divider
+
+Vout = Vin × R2 ÷ (R1 + R2), searched over IEC 60063 E-series values. The AVR recommendation of about 10 kΩ or less source impedance is from the ATmega328P datasheet's ADC section.
+
+## PWM
+
+Period = 1 ÷ f, on time = duty × period, average = high level × duty. A first-order RC filter with cutoff f ÷ 10 attenuates the carrier by about 20 dB (single pole, one decade above the cutoff).
+
+## Logic levels
+
+Typical datasheet values, to be confirmed against your exact part:
+
+| Family | Supply | VOH min | VOL max | VIH min | VIL max | Abs max input | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ATmega328P | 5 V | 4.0 V | 0.9 V | 0.6 × Vcc = 3.0 V | 0.3 × Vcc = 1.5 V | Vcc + 0.5 V | Microchip AVR DC characteristics: VIL 0.3 × Vcc and VIH 0.6 × Vcc for Vcc 2.4 to 5.5 V; VOH and VOL at 20 mA, Vcc 5 V, 85 °C. Confirm in the ATmega328P datasheet. |
+| ESP32 | 3.3 V | 0.8 × VDD = 2.64 V | 0.1 × VDD = 0.33 V | 0.75 × VDD = 2.475 V | 0.25 × VDD = 0.825 V | about 3.6 V (VDD + 0.3 V) | Espressif ESP32 datasheet, DC characteristics at VDD 3.3 V; pins are not 5 V tolerant |
+| 5 V TTL | 5 V | 2.7 V | 0.4 V | 2.0 V | 0.8 V | 5.5 V | Standard TTL levels (74LS) |
+| 74HCT | 5 V | 4.4 V | 0.1 V | 2.0 V | 0.8 V | Vcc + 0.5 V | TTL-compatible CMOS inputs |
+| 74HC / CD4000 | 5 V | 4.4 V | 0.1 V | 3.5 V | 1.5 V | Vcc + 0.5 V | CMOS thresholds at 5 V |
+| 3.3 V LVTTL | 3.3 V | 2.4 V | 0.4 V | 2.0 V | 0.8 V | 3.6 V | JEDEC LVTTL levels |
+
+Verdict rules: danger if the driver's supply exceeds the receiver's maximum input; level shifter needed if the high or low margin is negative; marginal under 0.2 V of margin; otherwise compatible.
+
+## UART (AVR)
+
+UBRR = fclk ÷ (16 × baud) − 1 in normal mode, fclk ÷ (8 × baud) − 1 in double-speed mode, rounded; actual baud = fclk ÷ (16 × (UBRR + 1)). From the ATmega328P datasheet, USART section. At 16 MHz, 115200 baud gives −3.5 % error in normal mode and +2.1 % with U2X.
+
+## AVR timers (CTC mode)
+
+f = fclk ÷ (prescaler × (OCR + 1)). Prescalers: Timer0 and Timer1 1, 8, 64, 256, 1024; Timer2 1, 8, 32, 64, 128, 256, 1024. Timer0 and Timer2 are 8-bit (OCR up to 255), Timer1 is 16-bit (up to 65535). ATmega328P datasheet.
+
+========================================================================
+Power and Battery Tools (source: https://github.com/MakersWorkbench/power-battery)
+========================================================================
+
+--- NOTICE ---
+Power and Battery Tools (TMWB Power and Battery Tools)
+Copyright 2026 TheMakersWorkbench.com (https://www.themakersworkbench.com)
+
+Developed and Maintained by TheMakersWorkbench.com
+
+This product is licensed under the Apache License, Version 2.0.
+Derivative works must retain this NOTICE and the attribution above, as
+described in section 4 of the License.
+
+--- SOURCES.md ---
+# Sources and constants
+
+
+## Linear regulator thermal
+
+Power = (Vin − Vout) × I + Vin × Iq. Efficiency = Vout × I ÷ (Vin × (I + Iq)). Junction temperature = ambient + P × θJA. Required heatsink θSA = (Tjmax − Ta) ÷ P − θJC − θCS. Standard thermal-resistance model (junction, case, sink, ambient), as described in regulator datasheets (for example the LM317 and 78xx families).
+
+## Capacitor discharge
+
+V(t) = V0 × e^(−t ÷ RC), so t = RC × ln(V0 ÷ V). Energy = ½CV². Standard RC discharge.
+
+## Battery pack
+
+Series adds voltage, parallel adds capacity; energy = nominal voltage × Ah; current = C-rate × capacity. Typical per-cell voltages: Li-ion/LiPo 3.7 / 4.2 / 3.0 V; LiFePO4 3.2 / 3.65 / 2.5 V; NiMH 1.2 / 1.45 / 1.0 V; alkaline 1.5 / 1.6 / 0.9 V; lead-acid 2.0 / 2.35 / 1.75 V per cell. These are typical figures to be confirmed against the cell datasheet.
+
+## Battery life
+
+Average current = (Ia × ta + Is × ts) ÷ (ta + ts). Switching regulator: Ibat = Iload × Vout ÷ (Vbat × efficiency) + Iq. Linear regulator: Ibat = Iload + Iq.
+
+## Filter capacitor
+
+Ripple ≈ I ÷ (f × C), with f equal to twice the mains frequency for full-wave rectification. Standard capacitor-input filter approximation.
+
+========================================================================
+PCB and Wiring Tools (source: https://github.com/MakersWorkbench/pcb-wiring)
+========================================================================
+
+--- NOTICE ---
+PCB and Wiring Tools (TMWB PCB and Wiring Tools)
+Copyright 2026 TheMakersWorkbench.com (https://www.themakersworkbench.com)
+
+Developed and Maintained by TheMakersWorkbench.com
+
+This product is licensed under the Apache License, Version 2.0.
+Derivative works must retain this NOTICE and the attribution above, as
+described in section 4 of the License.
+
+--- SOURCES.md ---
+# Sources and constants
+
+
+## Trace width
+
+IPC-2221: I = k × ΔT^0.44 × A^0.725, with I in amps, ΔT in °C, A in square mils, k = 0.048 (external) or 0.024 (internal). Copper weight: 1 oz = 1.378 mil (35 µm). IPC-2152 is the newer standard and may give different results for a given board. The IPC-2221 curves cover up to about 35 A.
+
+## Trace resistance
+
+R = ρ × L ÷ (w × t), copper ρ = 1.724 × 10⁻⁸ Ω·m at 20 °C, temperature coefficient 0.00393 per °C.
+
+## Via current
+
+Barrel cross-section = π ÷ 4 × (D² − (D − 2t)²), then the IPC-2221 internal conductor formula with k = 0.024. This is an estimate; published via data is limited.
+
+## Trace spacing
+
+IPC-2221 Table 6-1, minimum spacing in mm for DC or peak voltage (values to be confirmed against the standard before relying on them):
+
+| Up to (V) | Internal | External uncoated | External coated |
+| --- | --- | --- | --- |
+| 15 | 0.05 | 0.1 | 0.13 |
+| 30 | 0.05 | 0.1 | 0.13 |
+| 50 | 0.1 | 0.6 | 0.13 |
+| 100 | 0.1 | 0.6 | 0.13 |
+| 150 | 0.2 | 0.6 | 0.4 |
+| 170 | 0.2 | 1.25 | 0.4 |
+| 250 | 0.2 | 1.25 | 0.4 |
+| 300 | 0.2 | 1.25 | 0.4 |
+| 500 | 0.25 | 2.5 | 0.8 |
+
+## Wire gauge
+
+Diameter = 0.127 mm × 92^((36 − n) ÷ 39) (ASTM B258). Copper resistivity 1.724 × 10⁻⁸ Ω·m at 20 °C.
+
+========================================================================
+Bench Tools (source: https://github.com/MakersWorkbench/bench-tools)
+========================================================================
+
+--- NOTICE ---
+Bench Tools (TMWB Bench Tools)
+Copyright 2026 TheMakersWorkbench.com (https://www.themakersworkbench.com)
+
+Developed and Maintained by TheMakersWorkbench.com
+
+This product is licensed under the Apache License, Version 2.0.
+Derivative works must retain this NOTICE and the attribution above, as
+described in section 4 of the License.
+
+--- SOURCES.md ---
+# Sources and constants
+
+
+## Value converter and frequency
+
+Engineering prefixes (SI): giga 10⁹ down to pico 10⁻¹². Wavelength = c × velocity factor ÷ f, with c = 299,792,458 m/s.
+
+## Number bases
+
+Standard positional notation; signed values use two's complement for 8, 16, and 32 bits.
+
+## E-series
+
+IEC 60063 preferred numbers: E6, E12, E24, E48, and E96. E48 is every other E96 value.
+
+## Resistor color code, capacitor codes
+
+IEC 60062 color code and marking codes. Temperature coefficient colors: brown 100, red 50, orange 15, yellow 25, blue 10, violet 5 ppm/°C (black 250 on some parts).
+
+## I²C addresses
+
+The usual 7-bit addresses for common breakout boards, collected from the chip datasheets and the common board documentation. Jumpers and variants change them. To be confirmed with a scanner and your board.
+
+## AWG
+
+Diameter = 0.127 mm × 92^((36 − n) ÷ 39) (ASTM B258). Copper resistivity 1.724 × 10⁻⁸ Ω·m at 20 °C.
+
+## Logic levels
+
+Typical datasheet values, as listed in the Embedded Systems Toolkit sources.
+

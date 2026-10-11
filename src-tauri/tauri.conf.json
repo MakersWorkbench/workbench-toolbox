@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Workbench Toolbox",
+  "version": "1.0.0",
+  "identifier": "com.themakersworkbench.toolbox",
+  "build": { "frontendDist": "../www" },
+  "app": {
+    "windows": [{ "label": "main", "title": "Workbench Toolbox", "width": 1100, "height": 800, "minWidth": 360, "minHeight": 480 }],
+    "security": { "csp": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; connect-src 'self'" }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "category": "Utility",
+    "shortDescription": "Every Makers Workbench tool in one free, offline app",
+    "copyright": "Copyright 2026 TheMakersWorkbench.com. Apache-2.0.",
+    "license": "Apache-2.0",
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"]
+  }
+}
